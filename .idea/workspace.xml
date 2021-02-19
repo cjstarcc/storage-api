@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4cb9bf7-1291-4f1b-be82-b2cf1f019445" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/objectstream/objectstream.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/www/locate/locate.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/www/objects/objects.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/heartbeart/heartbeat.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/heartbeart/heartbeat.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +26,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1oQ9g6a7gmIeAIUSJF9s2H8Pnvu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="新增" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,6 +45,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\share\GoPath\src\storageApi\util\www\objects" />
+      <recent name="F:\share\GoPath\src\storageApi\util\www\locate" />
       <recent name="F:\share\GoPath\src\storageApi\util\heartbeart" />
     </key>
   </component>

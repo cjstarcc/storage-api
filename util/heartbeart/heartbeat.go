@@ -1,16 +1,15 @@
 package heartbeart
 
 import (
+	"math/rand"
 	"storageApi/conf"
 	"storageApi/rabbitmq"
-	"storageApi/util/consistent"
 	"strconv"
 	"sync"
 	"time"
 )
 
 var dataServers = make(map[string]time.Time)
-var hash *consistent.Hash= consistent.NewHash()
 var mutex sync.Mutex
 
 func ListenHeartBeat()  {
@@ -26,7 +25,6 @@ func ListenHeartBeat()  {
 		}
 		mutex.Lock()
 		dataServers[dataServer] = time.Now()
-		hash.Add(dataServer)
 		mutex.Unlock()
 	}
 }
@@ -38,7 +36,6 @@ func removeExpireDataServer()  {
 		for s,t:=range dataServers {
 			if t.Add(10*time.Second).Before(time.Now()){
 				delete(dataServers,s)
-				hash.Remove(s)
 			}
 		}
 		mutex.Unlock()
@@ -61,6 +58,5 @@ func ChooseRandomDataServer() string {
 	if n==0{
 		return ""
 	}
-	node,_ :=hash.Get(strconv.Itoa(n))
-	return node
+	return ds[rand.Intn(n)]
 }
