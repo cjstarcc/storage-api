@@ -10,9 +10,10 @@ import (
 	"strconv"
 )
 
-func main()  {
+func main() {
+	conf.InitConfig()
 	go heartbeart.ListenHeartBeat()
-	http.HandleFunc("/objects/",objects.Handler)
+	http.HandleFunc("/objects/", objects.Handler)
 	http.HandleFunc("/locate/", locate.Hander)
-	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(conf.GetConfig().Env.Port),nil))
+	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(conf.GetConfig().Env.Port), nil))
 }
