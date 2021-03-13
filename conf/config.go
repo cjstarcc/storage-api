@@ -12,6 +12,7 @@ type Config struct {
 		Port     int    `yaml:"port"`
 		Dir      string `yaml:"dir"`
 		Rabbitmq string `yaml:"rabbitmq"`
+		Es       string `yaml:"es"`
 	} `yaml:"env"`
 }
 

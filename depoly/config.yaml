@@ -2,3 +2,4 @@ env:
   port: 6002
   dir: /data
   rabbitmq: amqp://test:test@127.0.0.1:5672
+  es: 127.0.0.1
