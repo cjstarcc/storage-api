@@ -18,7 +18,7 @@ type Metadata struct {
 }
 
 func getMetaData(name string, versionId int) (meta Metadata, err error) {
-	url := fmt.Sprintf("http://%s/metadata/objects/%s_%d?_source", conf.GetConfig().Env.Es, name, versionId)
+	url := fmt.Sprintf("http://%s/objects_metadata/objects/%s_%d?_source", conf.GetConfig().Env.Es, name, versionId)
 	r, e := http.Get(url)
 	if e != nil {
 		return
@@ -44,7 +44,7 @@ type searchResult struct {
 }
 
 func SearchLatestVersion(name string) (meta Metadata, e error) {
-	esUrl := fmt.Sprintf("http://%s/metadata/_search?q=name:%s&size=1&sort=version:desc", conf.GetConfig().Env.Es, url.PathEscape(name))
+	esUrl := fmt.Sprintf("http://%s/objects_metadata/_search?q=name:%s&size=1&sort=version:desc", conf.GetConfig().Env.Es, url.PathEscape(name))
 	r, e := http.Get(esUrl)
 	if e != nil {
 		return
@@ -72,7 +72,7 @@ func GetMetaData(name string, version int) (Metadata, error) {
 func PutMetaData(name string, version int, size int64, hash string) error {
 	doc := fmt.Sprintf(`{"name":"%s","version":%d,"size":d,"hash":"%s"}`, name, version, size, hash)
 	client := http.Client{}
-	url := fmt.Sprintf("http://%s/metadata/objects/%s_%d?op_type=create", conf.GetConfig().Env.Es, name, version)
+	url := fmt.Sprintf("http://%s/objects_metadata/objects/%s_%d?op_type=create", conf.GetConfig().Env.Es, name, version)
 	request, _ := http.NewRequest("PUT", url, strings.NewReader(doc))
 	r, e := client.Do(request)
 	if e != nil {
@@ -97,7 +97,7 @@ func AddVersion(name string, hash string, size int64) error {
 }
 
 func SearchAllVersions(name string, from, size int) ([]Metadata, error) {
-	url := fmt.Sprintf("http://%s/metadata/_search?sort=name,version&from=%d&dsize=%d", conf.GetConfig().Env.Es, from, size)
+	url := fmt.Sprintf("http://%s/objects_metadata/_search?sort=name,version&from=%d&dsize=%d", conf.GetConfig().Env.Es, from, size)
 	if name != "" {
 		url += "&q=name:" + name
 	}
